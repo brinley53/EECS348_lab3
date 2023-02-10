@@ -9,6 +9,7 @@
 const char *months[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
 void sales_reports(float sales[MONTHS]) {
+	//for each month, print out the corresponding sale
 	printf("Monthly sales report for 2022:\n\n");
 	printf("Month       Sales\n");
 	for (int i = 0; i < MONTHS; i++) {
@@ -23,6 +24,9 @@ void min_max_avg(float sales[MONTHS]) {
 	int indexMin = 0;
 	int indexMax = 0;
 	float average = sales[0];
+	/*go through each month, checking to see if this one is greater than
+	 *the current max or less than the current min; if it is,
+	 *keep track of the index*/
 	for (int i = 1; i < MONTHS; i++) {
 		average += sales[i];
 		if (sales[i] < min) {
@@ -43,6 +47,7 @@ void min_max_avg(float sales[MONTHS]) {
 
 void six_month_avg(float sales[MONTHS]) {
 	printf("\n\nSix-Month Moving Average Report:\n\n");
+	//iterate through six months, printing out the first month and last month and the average between them
 	for (int i = 0; i < 7; i++) {
 		float average = 0;
 		printf("%-10s -\t%-10s", months[i], months[i+5]);
@@ -61,11 +66,14 @@ void print_sales_descending(float sales[MONTHS]) {
 	float max;
 	int indexMax;
 	int isIn = 0;
+	//order the months
 	for (int i = 0; i < MONTHS; i++) {
 		max = 0;
 		for (int j = 0; j < MONTHS; j++) {
+			//find the next greatest max
 			if (sales[j] > max) {
 				for (int k = 0; k < MONTHS; k++) {
+					//if we've already used this max (it's in the ordered array) skip it
 					if (sales[j] == orderedSales[k]) {
 						isIn = 1;
 					}
@@ -77,6 +85,7 @@ void print_sales_descending(float sales[MONTHS]) {
 			}
 			isIn = 0;
 		}
+		//add the next max to the ordered array
 		orderedSales[i] = max;
 		printf("%-12s", months[indexMax]);
 		printf("$%.2f\n", sales[indexMax]);
