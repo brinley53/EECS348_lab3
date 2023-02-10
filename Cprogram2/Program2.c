@@ -18,6 +18,7 @@ int check_combo(int score, int numTD, int numFG, int numSafety, int numTDC, int 
 	if (currentScore == score) {
 		printf("%d TD + 2pt, %d TD + FG, %d TD, %d 3pt FG, %d Safety\n", numTDC, numTDFG, numTD, numFG, numSafety);
 	}
+	return 0;
 }
 
 int combinations(int score) {
@@ -33,6 +34,7 @@ int combinations(int score) {
 			}
 		}
 	}
+	return 0;
 }
 
 int main() {
